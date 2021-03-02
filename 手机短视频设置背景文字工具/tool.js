@@ -35,6 +35,7 @@ function init() {
 }
 
 function addEventListener() {
+    const isHorizontal = document.getElementsByClassName('vertical')[0].style.display === 'none';
     const showSettingBtn = document.getElementsByClassName('show-setting')[0];
     const hideSettingBtn = document.getElementsByClassName('hide-setting')[0];
     const setting = document.getElementsByClassName('setting')[0];
@@ -50,7 +51,7 @@ function addEventListener() {
     // 设置背景图片透明度
     const progress = document.getElementsByClassName('progress-opacity')[0];
     progress.onchange = function (x) {
-        const picText = document.getElementsByClassName('pic-text')[0];
+        const picText = document.getElementsByClassName(`pic-text`)[0];
         picText.style.opacity = x.target.value / 100;
     }
 
@@ -67,7 +68,7 @@ function addEventListener() {
     // 设置作者
     const authorContent = document.getElementsByClassName('author-content')[0];
     authorContent.addEventListener('change', function (x) {
-        const author = document.getElementsByClassName('author')[0];
+        const author = document.getElementsByClassName(`${isHorizontal ? 'horizontal-author' : 'author'}`)[0];
         if (x.target.value) {
             author.innerHTML = x.target.value;
         }
@@ -76,7 +77,7 @@ function addEventListener() {
     // 设置标题
     const titleContent = document.getElementsByClassName('title-content')[0];
     titleContent.addEventListener('change', function (x) {
-        const title = document.getElementsByClassName('title')[0];
+        const title = document.getElementsByClassName(`${isHorizontal ? 'horizontal-title' : 'title'}`)[0];
         if (x.target.value) {
             title.innerHTML = x.target.value;
         }
@@ -85,16 +86,25 @@ function addEventListener() {
     // 设置原文
     const originContent = document.getElementsByClassName('origin-content')[0];
     originContent.addEventListener('change', function (x) {
-        const origin = document.getElementsByClassName('origin')[0];
-        if (x.target.value) {
-            origin.innerHTML = x.target.value;
+        const origin = document.getElementsByClassName(`${isHorizontal ? 'horizontal-origin' : 'origin'}`)[0];
+        if (!isHorizontal) {
+            if (x.target.value) {
+                origin.innerHTML = x.target.value;
+            }
+        } else {
+            const splitParagraph = x.target.value.split('.');
+            const parent = origin.parentNode;
+            for (const para of splitParagraph) {
+               //  parent.insertBefore();
+            }   
         }
+
     });
 
-    // 设置原文
+    // 设置译文
     const translateContent = document.getElementsByClassName('translate-content')[0];
     translateContent.addEventListener('change', function (x) {
-        const translate = document.getElementsByClassName('translate')[0];
+        const translate = document.getElementsByClassName(`${isHorizontal ? 'horizontal-translate' : 'translate'}`)[0];
         if (x.target.value) {
             translate.innerHTML = x.target.value;
         }

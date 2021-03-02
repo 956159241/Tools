@@ -47,7 +47,8 @@
             filter: Alpha(opacity=50);
         }
 
-        .content {
+        .vertical { width: 100%; height: 100%; }
+        .vertical .content {
             position: relative;
             top: -635px;
             text-align: center;
@@ -55,24 +56,31 @@
             padding: 10px;
         }
 
-        .content div {
+        .vertical .content div {
             margin: 10px 0px;
         }
 
-        .title {
+        .vertical .title {
             font-size: 18px;
         }
 
-        .origin,
-        .translate {
+        .vertical .origin,
+        .vertical .translate {
             text-align: justify;
             letter-spacing: 2px;
+            line-height: 30px;
         }
 
-        .origin-title,
-        .translate-title {
+        .vertical .origin-title,
+        .vertical .translate-title {
             text-align: left;
         }
+
+        .horizontal { position: relative; height: 100%; padding: 30px; display: none; }
+        .horizontal .horizontal-content {  display: flex; flex-direction: row-reverse; height: 100%; }
+        .horizontal .horizontal-content div { width: 20px; align-self: auto; padding: 10px; 
+            line-height: 20px; }
+        .horizontal-title { padding-right: 30px !important; }
 
         .show-button { float: right; height: 30px; }
         .setting { padding-top: 30px; }
@@ -98,14 +106,27 @@
             <div class="lunar-calendar"></div>
         </div>
         <div class="pic-text"></div>
-        <div class="content">
-            <div class="title">标题</div>
-            <div class="author">李白</div>
-            <div class="origin-title">原文</div>
-            <div class="origin">与朋友交游，须将他们好处留心学来，方能受益；对圣贤言语，必要我平时照样行去，才算读书。</div>
-            <div class="translate-title">注解</div>
-            <div class="translate">与朋友交游，须将他们好处留心学来，方能受益；对圣贤言语，必要我平时照样行去，才算读书。</div>
+        <div class="vertical">
+            <div class="content">
+                <div class="title">标题</div>
+                <div class="author">李白</div>
+                <div class="origin-title">原文</div>
+                <div class="origin">与朋友交游，须将他们好处留心学来，方能受益；对圣贤言语，必要我平时照样行去，才算读书。</div>
+                <div class="translate-title">注解</div>
+                <div class="translate">与朋友交游，须将他们好处留心学来，方能受益；对圣贤言语，必要我平时照样行去，才算读书。</div>
+            </div>
         </div>
+        <div class="horizontal">
+            <div class="horizontal-content">
+                <div class="horizontal-title">标题</div>
+                <div class="horizontal-author">王永彬</div>
+                <div class="horizontal-origin-title">原文</div>
+                <div class="horizontal-origin"></div>
+                <div class="horizontal-translate-title">注解</div>
+                <div class="horizontal-translate"></div>
+            </div>
+        </div>
+
 
     </div>
 
